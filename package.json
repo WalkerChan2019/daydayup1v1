@@ -1,0 +1,18 @@
+{
+  "name": "walk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "scope": "jest __tests__/scope.spec.js --watch",
+    "walk": "jest __tests__/walk.spec.js --watch",
+    "analyze": "jest __tests__/analyze.spec.js --watch",
+    "jest":"jest --watchAll"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^29.0.0"
+  }
+}
