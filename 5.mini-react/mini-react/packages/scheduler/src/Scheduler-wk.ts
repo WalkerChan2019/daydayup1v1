@@ -41,7 +41,6 @@ let startTime = -1;
 let needsPaint = false;
 let frameInterval = 5; //frameYieldMs;
 
-// 是否交还控制权给主线程
 function shouldYieldToHost() {
   const timeElapsed = getCurrentTime() - startTime;
   if (timeElapsed < frameInterval) {
