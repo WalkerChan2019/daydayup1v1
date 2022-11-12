@@ -1,4 +1,4 @@
-const { findSubstr } = require("../04.js");
+const { findSubstr } = require("../06.js");
 
 describe("findSubstr", () => {
   test("success", () => {
