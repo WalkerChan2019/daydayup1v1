@@ -1,3 +1,4 @@
 [submodule "homework"]
-	path = 1v1/homework
+	path = homework
 	url = https://github.com/zer0fire/homework.git
+
