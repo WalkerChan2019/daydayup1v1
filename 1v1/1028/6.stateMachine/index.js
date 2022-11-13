@@ -86,7 +86,7 @@ function check(str) {
     // console.log(char);
     state = state(char);
   }
-  state = state(EOF);
+  state = state(EOF); // 这一步咋理解？ ===> 好巧妙 
   if (state === success) {
     // 状态成功
     return true;
