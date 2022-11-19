@@ -58,6 +58,7 @@ function check3(source, pattern) {
 
 console.log(check3("mississippi", "issip"));
 console.log(check3("xxxxxaabaabaaab", "aabaabaaab"));
+console.log(check3("baabbbbababbbabab","abbab"));
 
 module.exports = {
   findSubstr:check3,
@@ -84,7 +85,7 @@ function wkKmp1(pattern) {
       next[i+1]=j
     } else if (j === 0) {
       next[i+1] = 0
-      j++
+      // j++
     } else {
       i-- 
       j = next[j]
@@ -103,7 +104,7 @@ function wkKmp2(pattern) {
     } else if (j === 0) {
       i++;
       next[i] = 0;
-      j++;
+      // j++;
     } else {
       j = next[j];
       // i--;
@@ -123,7 +124,7 @@ function wkKmp3(pattern) {
     } else if (j === 0) {
       i++;
       next[i] = 0;
-      j++;
+      // j++; //这里j保持为0 
     } else {
       j = next[j];
     }
@@ -132,8 +133,18 @@ function wkKmp3(pattern) {
 }
 
 
-console.log(wkKmp3("aabaabaaab"));
+// console.log(wkKmp3("aabaabaaab"));
+console.log(wkKmp3("abbab"));
 
+//i abbab
+//j   abbab
+//    ^
+//0 00
+
+//i abbab
+//j    abbab
+//      ^
+//0 00012
 
 
 //=======================来自leetcode ===> 有问题
