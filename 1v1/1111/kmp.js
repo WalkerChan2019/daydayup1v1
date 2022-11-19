@@ -19,5 +19,5 @@ var kmp = function (needle) {
 }
 
 
-console.log(kmp("ab0abcab0d"));
+console.log(kmp("ab0dabcab0d"));
 

@@ -10,7 +10,7 @@ function findSubstr(source, pattern) {
   for (let i = 0; i < source.length; i++) {
     console.log('11');
     if (source[i] !== pattern[j]) {
-      if (note>=1 ) {
+      if (note>=1 ) { // bug2 
         i = i - (note - 1)
         j = 0;
         note = 0;
@@ -19,7 +19,7 @@ function findSubstr(source, pattern) {
         note = 0;
       }
       if (source[i] === pattern[j]) {
-        j++ // 这里是j++ 
+        j++ // 这里是j++   //bug1 
         note++
       }
     } else {
@@ -41,3 +41,9 @@ function findSubstr(source, pattern) {
 module.exports = {
   findSubstr,
 };
+
+
+
+
+// kongingsingsingp
+//         ingsingp
