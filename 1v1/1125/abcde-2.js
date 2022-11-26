@@ -6,12 +6,12 @@ const EOF = Symbol("EOF");
 // let findB = findX("b", findC);
 // let start = findX("a", findB);
 
-function finsStr(source, pattern) {
+function findStr(source, pattern) {
   let start;
   function findX(condition, nextState,reconsume) {
     // reconsume 字符重用 
     return function findNext(char) {
-      console.log(condition);
+      // console.log(condition);
       if (char === condition) {
         return nextState;
       } else {
@@ -32,7 +32,7 @@ function finsStr(source, pattern) {
   }
   let state = start;
   for (let i = 0; i < source.length; i++) {
-    console.log(state.name, i, source[i]);
+    // console.log(state.name, i, source[i]);
     state = state(source[i]);
     if (state === success) {
       return i - pattern.length + 1;
@@ -88,4 +88,6 @@ function success(input) {
   throw new Error("illegal success call");
 }
 
-console.log(finsStr("xyzabcde", "abcde"));
+// console.log(finsStr("xyzabcde", "abcde"));
+
+module.exports = { findStr };

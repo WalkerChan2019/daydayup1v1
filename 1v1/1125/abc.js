@@ -1,11 +1,11 @@
-const EOF = Symbol("EOF");
 
-function finsStr(source, pattern) {
+
+function findStr(source, pattern) {
   let state = start;
   for (let i = 0; i < source.length; i++) {
     state = state(source[i]);
-    if (state===success) {
-      return i-pattern.length+1
+    if (state === success) {
+      return i - pattern.length + 1;
     }
   }
   return -1;
@@ -35,12 +35,13 @@ function findB(input) {
    }
 }
 
-function findC(input) {
-
-}
 
 function success(input) {
   throw new Error("illegal success call");
 }
 
-console.log(finsStr("asabcd","abc"));
+// console.log(finsStr("asabcd","abc"));
+
+// console.log(finsStr("ababcd", "abc"));//不支持
+
+module.exports = { findStr };

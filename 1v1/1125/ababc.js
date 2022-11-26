@@ -1,4 +1,3 @@
-const EOF = Symbol("EOF");
 
 function finsStr(source, pattern) {
   let state = start;
@@ -28,11 +27,11 @@ function findA(input) {
   if (input == "b") {
     return findB;
   } else {
-    return start(input);
+    return start(input); // 调整
   }
 }
 
-function findB(input) { // 
+function findB(input) {
   if (input == "a") {
     return findC;
   } else {
@@ -40,7 +39,7 @@ function findB(input) { //
   }
 }
 
-function findC(input) { // 
+function findC(input) {
   if (input == "b") {
     return findD;
   } else {
@@ -52,7 +51,6 @@ function findD(input) {
   if (input == "c") {
     return success;
   } else {
-    // return start(input);
     return findB(input);
   }
 }
@@ -62,4 +60,7 @@ function success(input) {
 }
 
 
-console.log(finsStr("abababcde", "ababc"));
+// console.log(finsStr("abababcde", "ababc"));
+// console.log(finsStr("xyz---ababcde", "ababc"));
+
+module.exports= { finsStr };
