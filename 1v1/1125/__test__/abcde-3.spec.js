@@ -1,9 +1,10 @@
 const { findStr } = require("../abcde-3.js");
 
 describe("测试abcde-2.js", () => {
-  test("is true", () => {
-    expect(true).toBe(true)
-  })
+  // test("is true", () => {
+  //   expect(true).toBe(true)
+  // })
+
   // test("pattern`abc`例子：成功", () => {
   //   expect(findStr("xyzabcde", "abc")).toBe(3);
   // });
@@ -16,7 +17,7 @@ describe("测试abcde-2.js", () => {
   // test("pattern`ababc`例子：成功", () => {
   //   expect(findStr("xyababc00", "ababc")).toBe(2);
   // });
-  //  test("source`ab`重复,pattern`ababc`例子：成功", () => { // 失败 
-  //    expect(findStr("abababc00", "ababc")).toBe(2);
-  //  });
+   test("source`ab`重复,pattern`ababc`例子：成功", () => { // 失败 
+     expect(findStr("abababc00", "ababc")).toBe(2);
+   });
 });
