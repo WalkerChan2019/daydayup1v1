@@ -1,12 +1,50 @@
 class MinHeap {
   constructor() {
     this.data = [];
+    this._k = null;
+    this._heap = null;
+  }
+  static generateInstance(k, nums) {
+    // static方法里的this是指class类，不是构造实例
+    function add(node) {
+      // console.log("this2:", this);
+      // console.log(MinHeap._instance);
+      // if (!MinHeap._instance) throw new Error("还没构建MinHeap实例");
+      // wk定义
+      // this=MinHeap._instance
+      // const _instance = MinHeap._instance;
+      // console.log("this:",this);
+      this.push(node); //在push内部会做shift位置调整：从堆底添加元素，再shiftUp
+      console.log(this.data);
+      if (this.size() > this._k) {
+        // console.log(this.heap.all());
+        this.pop(); // 从堆顶抛出元素,把堆底元素直接放到堆顶,再shiftDown
+        // console.log(this.heap.all());
+        // k个元素 ？
+        let res = this.peek(); //获取堆顶最小值
+        // console.log(res);
+        return res;
+      }
+    }
+    // 只能MinHeap使用的方法
+    // wk定义
+    // console.log("this1:", this);
+    this._k = k;
+    this._instance = new MinHeap();
+    this._instance.add=add
+    for (const node of nums) {
+      this._instance.add(node);
+    }
+
+    return this._instance;
+  }
+
+  all() {
+    // wk定义
+    return this.data;
   }
   size() {
     return this.data.length;
-  }
-  all() {
-    return this.data;
   }
   peek() {
     //获取堆顶最小值
@@ -20,9 +58,8 @@ class MinHeap {
     [this.data[m], this.data[n]] = [this.data[n], this.data[m]];
   }
   pop() {
-    // 从堆顶抛出元素
     if (this.size() === 0) return null;
-    const last = this.data.pop();
+    const last = this.data.pop(); // 从堆顶抛出元素
     // console.log("last:", last);
     if (this.size() !== 0) {
       this.data[0] = last; //把堆底元素直接放到堆顶
@@ -130,46 +167,47 @@ class MinHeap {
   }
 }
 
-
 module.exports = { MinHeap };
 
-function KthLargest(k, nums) {
-  this.k = k;
-  this.heap = new MinHeap();
-  for (const node of nums) {
-    this.add(node);
-  }
-}
+//===============================================
+// function KthLargest(k, nums) {
+//   this.k = k;
+//   this.heap = new MinHeap();
+//   for (const node of nums) {
+//     this.add(node);
+//   }
+// }
 
-KthLargest.prototype.add = function (node) {
-  this.heap.push(node); //在push内部会做shift位置调整
-  if (this.heap.size() > this.k) {
-    console.log(this.heap.all());
-    this.heap.pop();
-    console.log(this.heap.all());
-    // k个元素 ？
-    let res = this.heap.peek();
-    console.log(res);
-    return res;
-  }
-};
+// KthLargest.prototype.add = function (node) {
+//   this.heap.push(node); //在push内部会做shift位置调整：从堆底添加元素，再shiftUp
+//   if (this.heap.size() > this.k) {
+//     // console.log(this.heap.all());
+//     this.heap.pop(); // 从堆顶抛出元素,把堆底元素直接放到堆顶,再shiftDown
+//     // console.log(this.heap.all());
 
-let kth = new KthLargest(3, [4, 5, 8, 2]);
-console.log(kth.add(3));
-// console.log(kth.add(5));
-console.log(kth.add(10));
-console.log(kth.add(9));
-console.log(kth.add(4));
-
-// let kth = new KthLargest(3, [4, 5, 8, 2, 3, 5, 10, 9, 4]); //有误
+//     // k个元素 ？
+//     let res = this.heap.peek();
+//     // console.log(res);
+//     return res;
+//   }
+// };
 
 // let kth = new KthLargest(3, [4, 5, 8, 2]);
+// console.log(kth.add(3));
+// console.log(kth.add(3));
 // console.log(kth.add(3));
 // console.log(kth.add(5));
 // console.log(kth.add(10));
 // console.log(kth.add(9));
 // console.log(kth.add(4));
 
-// ==========> js脚本/ node 如何调试？
+//===========================================
+// console.log(MinHeap.generateInstance);
+// console.log(MinHeap.add);
+// console.log(MinHeap.generateInstance(3,[4,5,8,2]).add);//undefined
 
-
+//===========================================
+let heap = MinHeap.generateInstance(3, [4, 5, 8, 2]);
+console.log(heap);
+console.log(heap.all());
+console.log(heap.size());
