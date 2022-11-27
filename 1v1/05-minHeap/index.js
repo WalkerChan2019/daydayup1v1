@@ -2,43 +2,42 @@ class MinHeap {
   constructor() {
     this.data = [];
     this._k = null;
-    this._heap = null;
+    // this._heap = null;
   }
   static generateInstance(k, nums) {
     // static方法里的this是指class类，不是构造实例
-    function add(node) {
-      // console.log("this2:", this);
-      // console.log(MinHeap._instance);
-      // if (!MinHeap._instance) throw new Error("还没构建MinHeap实例");
-      // wk定义
-      // this=MinHeap._instance
-      // const _instance = MinHeap._instance;
-      // console.log("this:",this);
-      this.push(node); //在push内部会做shift位置调整：从堆底添加元素，再shiftUp
-      console.log(this.data);
-      if (this.size() > this._k) {
-        // console.log(this.heap.all());
-        this.pop(); // 从堆顶抛出元素,把堆底元素直接放到堆顶,再shiftDown
-        // console.log(this.heap.all());
-        // k个元素 ？
-        let res = this.peek(); //获取堆顶最小值
-        // console.log(res);
-        return res;
-      }
-    }
+    // function add(node) {
+    //   this.push(node); //在push内部会做shift位置调整：从堆底添加元素，再shiftUp
+    //   console.log(this.data);
+    //   console.log(this.size(), this._k);
+    //   if (this.size() > this._k) {
+    //     this.pop(); // 从堆顶抛出元素,把堆底元素直接放到堆顶,再shiftDown
+    //     let res = this.peek(); //获取堆顶最小值
+    //     return res;
+    //   }
+    // }
     // 只能MinHeap使用的方法
     // wk定义
     // console.log("this1:", this);
-    this._k = k;
     this._instance = new MinHeap();
-    this._instance.add=add
-    for (const node of nums) {
+    // this._instance.add = add;
+    this._instance._k = k;
+    for (let node of nums) {
       this._instance.add(node);
     }
 
     return this._instance;
   }
-
+  add(node) {
+    this.push(node); //在push内部会做shift位置调整：从堆底添加元素，再shiftUp
+    console.log(this.data);
+    console.log(this.size(), this._k);
+    if (this.size() > this._k) {
+      this.pop(); // 从堆顶抛出元素,把堆底元素直接放到堆顶,再shiftDown
+      let res = this.peek(); //获取堆顶最小值
+      return res;
+    }
+  }
   all() {
     // wk定义
     return this.data;
