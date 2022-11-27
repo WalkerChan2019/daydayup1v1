@@ -30,8 +30,8 @@ class MinHeap {
   }
   add(node) {
     this.push(node); //在push内部会做shift位置调整：从堆底添加元素，再shiftUp
-    console.log(this.data);
-    console.log(this.size(), this._k);
+    // console.log(this.data);
+    // console.log(this.size(), this._k);
     if (this.size() > this._k) {
       this.pop(); // 从堆顶抛出元素,把堆底元素直接放到堆顶,再shiftDown
       let res = this.peek(); //获取堆顶最小值
@@ -117,6 +117,8 @@ class MinHeap {
         break;
       }
     }
+
+    return this.all()
   }
 
   shiftDown_gao(node, i) {
@@ -206,7 +208,7 @@ module.exports = { MinHeap };
 // console.log(MinHeap.generateInstance(3,[4,5,8,2]).add);//undefined
 
 //===========================================
-let heap = MinHeap.generateInstance(3, [4, 5, 8, 2]);
-console.log(heap);
-console.log(heap.all());
-console.log(heap.size());
+// let heap = MinHeap.generateInstance(3, [4, 5, 8, 2]);
+// console.log(heap);
+// console.log(heap.all());
+// console.log(heap.size());
