@@ -1,5 +1,5 @@
 {
-  "name": "6.stateMachine",
+  "name": "state_machine",
   "version": "1.0.0",
   "description": "- 摩尔型状态机",
   "main": "index.js",

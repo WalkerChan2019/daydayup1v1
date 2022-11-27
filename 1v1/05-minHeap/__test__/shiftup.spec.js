@@ -29,5 +29,17 @@ describe("shiftDown_gao", () => {
     //    5
     //  2    8
     //10  3  4  5
+
+    heap.data = [10, 12, 9];
+    expect(heap.shiftDown(10, 0)).toEqual([9, 12, 10]);
+
+    heap.data = [10, 8, 9,13,9,4,5];
+    //    10
+    //  8    9
+    //13  9  4  5
+    //    8
+    //  9    9
+    //13  10  4  5
+    expect(heap.shiftDown(10, 0)).toEqual([8, 9, 9, 13, 10, 4, 5]);
   });
 });
