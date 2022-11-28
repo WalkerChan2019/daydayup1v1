@@ -28,9 +28,11 @@ const isSpecialStr = function (input) {
 };
 
 const isValidTagStr = function (input) {
-  let reg = /[a-z]||[A-Z]||[1-5]/g; //<h1></h1><h5></h5>
+  let reg = /[a-zA-Z1-5]/g; //<h1></h1><h5></h5>
   return reg.test(input);
 };
+
+// console.log(isValidTagStr(" "));
 
 // 1- parse标签的前半部分 
 //标签开始
@@ -38,13 +40,34 @@ let currentTagName = "";
 let currentContent = "";
 let currentTagAttrs = "";
 let isThisTagValid = false;
-function parseNewLabel(input) {
-  //   console.log("start");
-  if (input === "<") {
-    return parseTagName;
-  } else if (input === " ") {
-    return startNewLabel;
+
+function parseNewLabel(str) {
+  let state = start;
+  for (const char of str) {
+    console.log(state.name, char);
+    state = state(char);
   }
+  if (state === succeed) {
+    // tagLeftEnd
+    // 获取tagName
+    return currentTagName;
+  } else if (state === fail) {
+    return false;
+  }
+}
+function start(input) {
+  //   console.log("start");
+  // let input = str[i++];
+  // while (i < str.length) {
+  //   console.log(input);
+     if (input === "<") {
+       return parseTagName;
+     } else if (input === " ") {
+       return start;
+     } else {
+       return (isThisTagValid = false);
+     }
+  // }
 }
 
 function parseTagName(input) {//parse标签的前半部（的名称）："<"之后, atrrs或者"/"">"之前 
@@ -54,7 +77,8 @@ function parseTagName(input) {//parse标签的前半部（的名称）："<"之�
   } else if (isSpecialStr(input)) {
     if (input === ">") {
       //前半部分结束
-      return tagLeftEnd
+      return succeed;
+      // return tagLeftEnd
     } else if (input === "/") {
       //单标签（可能是） <input  /  >
       return isValidSingleLabel;
@@ -77,7 +101,9 @@ function parseTagAttrs(input) {
     //单标签 <input value="789"  /  >
   } else if (input===">") {
     // 标签左半部分结束
-    return parseContent
+    return succeed;
+    // return tagLeftEnd;
+    // return parseContent
   } else {
     currentTagAttrs += input
     return parseTagAttrs
@@ -85,7 +111,16 @@ function parseTagAttrs(input) {
   
 }
 
+function tagLeftEnd(input) {
+  return succeed;
+}
+// 结束状态
+function succeed(input) {
+  throw new Error("illegal success call");
+  // return success;
+}
 
+console.log(parseNewLabel("  <div  ></div>"));
 
 function isValidSingleLabel() {
   
