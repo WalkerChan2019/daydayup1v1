@@ -51,7 +51,7 @@ function findD(input) {
   if (input == "c") {
     return success;
   } else {
-    return findB(input);
+    return findB(input);// reconsume    
   }
 }
 

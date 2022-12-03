@@ -37,7 +37,11 @@ function check3(source, pattern) {
   // aabaabaaaa
   // aabaabaaaa
   // 
-// 
+
+//  ababc  i
+//      ababc  j
+//      ^
+//0 00120     next 
   // const next = wkKmp1(pattern);
   const next = wkKmp3(pattern);
   let j = 0;
@@ -66,15 +70,15 @@ module.exports = {
 
 
 //i: aabaabaaab
-//j:        aabaabaaab
+//j:    aabaabaaab
 //           ^
-//   0101234523
+//   01012345        next 
 
-
+//规则背下来 
 //i: aabaabaaab
 //j:        aabaabaaab
 //            ^
-//0  0101234523
+//0  0101234523           next
 
 // from winter 
 function wkKmp1(pattern) {
