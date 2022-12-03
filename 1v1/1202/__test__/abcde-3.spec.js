@@ -1,4 +1,4 @@
-const { findStr } = require("../abcde-3.js");
+const { findStr } = require("../abcde-5.js");
 
 describe("测试abcde-2.js", () => {
   // test("is true", () => {

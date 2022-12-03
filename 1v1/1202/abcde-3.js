@@ -36,6 +36,8 @@ function findStr(source, pattern) {
       }
     };
   }
+
+  
   {
     let state = success;
     for (let i = 1, j = 0; i < pattern.length; i++) {
