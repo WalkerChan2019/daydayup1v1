@@ -25,7 +25,7 @@ function generateAllStates(pattern) {
   let allStates = [];
   let next = [0, 0]; //
   let state;
-  for (let i = 0, j = 0; i < pattern.length; i++) {
+  for (let i = 0, j = 0; i < pattern.length; i++) {//只一遍循环 
     //同时算出next
     let map = new Map();
 
