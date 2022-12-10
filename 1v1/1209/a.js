@@ -1,9 +1,9 @@
 let start = function (c) {
   console.log("start:",c);
-  
   if (c === ' ') {
     return fn1
   } else {
+    receiveHttpVersion(c);
     return start 
   }
 }
@@ -13,18 +13,17 @@ let httpText = ""
 
 function fn1(c) {
   if (c === " ") {
-    receiveHttpVersion(c);
     return fn2
   } else {
+     receiveStatusCode(c);
     return fn1;
   }
 }
 function fn2(c) {
   if (c === "\r") {
-    receiveStatusCode(c);
-    // receiveHttpText(c);
     return fn3;
   } else {
+    receiveHttpText(c);
     return fn2;
   }
 }
@@ -41,6 +40,8 @@ function receiveStatusCode(c) {
 function receiveHttpText(c) {
   httpText += c;
 }
+
+
 class Parser {
   constructor() {
     this.state = start;
