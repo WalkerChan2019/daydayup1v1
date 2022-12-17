@@ -1,0 +1,19 @@
+{
+  "name": "1111",
+  "version": "1.0.0",
+  "description": "- 摩尔型状态机",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --watch",
+    "coverage": "npx jest --coverage"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.18.6",
+    "http": "^0.0.1-security",
+    "jest": "^29.2.2",
+    "jest-environment-jsdom": "^29.0.2"
+  }
+}
