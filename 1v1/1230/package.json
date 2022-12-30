@@ -1,0 +1,17 @@
+{
+  "name": "1230",
+  "version": "1.0.0",
+  "description": "",
+  "main": "buffer.js",
+  "scripts": {
+    "test": "jest --watch",
+    "coverage": "npx jest --coverage"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^29.3.1",
+    "jest-environment-jsdom": "^29.3.1"
+  }
+}

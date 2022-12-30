@@ -50,39 +50,60 @@ function receiveN(input) {// \r\n
   }
 }
 
-function checkEmptyLine(input) {// 过渡   换行 \r\n\r\n 
-  if (input === '\r') {
-    return readBody
-  } else {
-    return readKey.call(this,input)// call 
-  }
-}
-
-function readBody() {
-  return readBody;
-}
 
 function readKey(input) {
   if (input === ":") {
     return readValue;
   } else {
     this.tempK += input;
-    // this.tempV+=input 
-    return readKey
+    // this.tempV+=input
+    return readKey;
   }
 }
 
 function readValue(input) {
-  if (input === "\r") {//cb cr  carrage return / carrage back 
+  if (input === "\r") {
+    //cb cr  carrage return / carrage back
     this.store.header[this.tempK] = this.tempV; // 存储一组
-    this.tempK = ""
-    this.tempV=""
+    this.tempK = "";
+    this.tempV = "";
     return receiveN;
-  } else{
+  } else {
     this.tempV += input;
-    return readValue
+    return readValue;
   }
 }
+
+function checkEmptyLine(input) {
+  // 过渡   换行 \r\n\r\n
+  if (input === "\r") {
+    return beforeBody;
+  } else {
+    return readKey.call(this, input); // call
+  }
+}
+
+
+function beforeBody(input) {
+  if (input === "<") {
+    return readBody.call(this,input);
+  } else{
+    return beforeBody;
+  }
+}
+
+function readBody(input) {
+  this.store.body += input; 
+  return readBody;
+  // if (input === '\n') {
+  //   return readBody;
+  // } else {
+  //   this.store.body+=input 
+  // }
+}
+
+function afterBody(input) {}
+
 
 
 
@@ -103,12 +124,13 @@ class Parser {
         // keepalive: '',
         // TransferEncoding:''
       },
+      body:""
     };
   }
 
   write(data) {
     for (let i = 0; i < data.length; i++) {
-      // console.log(this.state.name, data[i]); //data, data[i], typeof data[i]
+      console.log(this.state.name, data[i]); //data, data[i], typeof data[i]
       this.state = this.state(data[i].toString());
     }
     // this.state(EOF);
