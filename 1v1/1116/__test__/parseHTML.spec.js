@@ -9,9 +9,9 @@ describe("parse HTML", () => {
     expect(parseHTML(" <div  >  < /div >")).toBe(false);
     expect(parseHTML(" <div  >  </ div >")).toBe(false);
   });
-  test("text node", () => {});
-  test("comment node", () => {});
-  test("CDATA node", () => {});
-  test("ProcessingInstruction node", () => {});
-  test("DocumentType node", () => {});
+  // test("text node", () => {});
+  // test("comment node", () => {});
+  // test("CDATA node", () => {});
+  // test("ProcessingInstruction node", () => {});
+  // test("DocumentType node", () => {});
 });

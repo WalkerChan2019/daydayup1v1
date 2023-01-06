@@ -37,7 +37,7 @@ const client = net.createConnection({ port: 8000, host: "127.0.0.1" }, () => {
 
 client.on("data", (data) => {
   // console.log('data:', data.toString());
-  let d = data.toString();
+  // let d = data.toString();
   // console.log("d----:",d);
   ps.write(data.toString());
   console.log(ps.store);
